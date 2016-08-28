@@ -5,16 +5,41 @@ export class Hero {
   name: string;
 }
 
+const HEROES: Hero[] = [
+  { id: 11, name: 'mr dill' },
+  { id: 12, name: 'turmeric' },
+  { id: 13, name: 'ragweed' },
+  { id: 14, name: 'hammer thyme' },
+  { id: 15, name: 'vanilla' },
+  { id: 16, name: 'nutmeg' },
+  { id: 17, name: 'garlic POWder' },
+  { id: 18, name: 'dr pepper' },
+  { id: 19, name: 'gochugaru!!!' },
+  { id: 20, name: 'cayenne' }
+];
+
+
 @Component({
     selector: 'my-app',
     template:`
       <h1>{{title}}</h1>
       <h2>my spices!</h2>
       <ul class='heroes'>
-        <li *ngFor='let hero of heroes'>
+        <li *ngFor='let hero of heroes'
+            (click)="onSelect(hero)"
+            [class.selected]="hero === selectedHero" >
           <span class='badge'>{{hero.id}}</span> {{hero.name}}
         </li>
       </ul>
+
+      <div *ngIf="selectedHero">selected spice hero:
+        <h2>{{selectedHero.name}} details!</h2>
+        <div><label>id:</label>{{selectedHero.id}}</div>
+        <div>
+          <label>name: </label>
+          <input [(ngModel)]="selectedHero.name" placeholder='name'/>
+        </div>
+      </div>
    `,
    styles: [`
     .selected {
@@ -69,21 +94,10 @@ export class Hero {
 export class AppComponent {
   heroes = HEROES;
   title = 'tour of spice heroes';
-  hero = {
-    id: 1,
-    name: 'windstorm'
+  selectedHero: Hero;
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
   }
 }
 
-const HEROES: Hero[] = [
-  { id: 11, name: 'mr dill' },
-  { id: 12, name: 'turmeric' },
-  { id: 13, name: 'ragweed' },
-  { id: 14, name: 'bang bang' },
-  { id: 15, name: 'vanilla' },
-  { id: 16, name: 'nutmeg' },
-  { id: 17, name: 'garlic powder' },
-  { id: 18, name: 'dr pepper' },
-  { id: 19, name: 'molasses' },
-  { id: 20, name: 'cayenne' }
-];
