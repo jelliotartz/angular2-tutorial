@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'detail/:id',
+    component: HeroDetailComponent
   }
 ]
 
