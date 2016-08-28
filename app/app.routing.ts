@@ -12,3 +12,5 @@ const appRoutes: Routes = [
     component: HeroesComponent
   }
 ]
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes)
