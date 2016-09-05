@@ -28,4 +28,4 @@ const appRoutes: Routes = [
   }
 ]
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes)
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes) // This method returns a configured router module that we'll add to our root NgModule, AppModule
