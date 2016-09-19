@@ -17,11 +17,11 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1,5))
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1, 5))
   }
 
   gotoDetail(hero: Hero): void {
