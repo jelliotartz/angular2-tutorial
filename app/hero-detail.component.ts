@@ -1,3 +1,5 @@
+//tslint:disable
+
 import {
   Component,
   Input,
@@ -35,5 +37,10 @@ export class HeroDetailComponent {
 
   goBack(): void {
     window.history.back()
+  }
+
+  save(): void {
+    this.heroService.update(this.hero)
+        .then(this.goBack)
   }
 }
