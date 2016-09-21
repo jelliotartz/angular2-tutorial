@@ -1,3 +1,5 @@
+//tslint:disable
+
 import {
   Component,
   OnInit,
@@ -45,6 +47,17 @@ export class HeroesComponent implements OnInit {
         this.heroes.push(hero)
         this.selectedHero = null;
       });
-}
+  }
+
+  delete(hero: Hero): void {
+    this.heroService.delete(hero.id).then(
+      () => {
+        this.heroes = this.heroes.filter(h => h !== hero)
+        if (this.selectedHero === hero) {
+          this.selectedHero = null
+        }
+      }
+    )
+  }
 
 }
